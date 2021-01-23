@@ -4,12 +4,25 @@
   "description": "Node.js on Docker",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "build": "tsc",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec \"npx ts-node\" src/server.ts",
+    "start": "node build/src/server.js"
   },
   "keywords": [],
   "author": "Tri Rizeki Rifandani",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.11",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.22",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   }
 }
