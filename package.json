@@ -4,7 +4,7 @@
   "description": "Node.js on Docker",
   "main": "server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npx tsc",
     "dev": "nodemon --watch 'src/**/*.ts' --exec \"npx ts-node\" src/server.ts",
     "start": "node build/src/server.js"
   },
@@ -14,6 +14,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "helmet": "^4.4.1",
     "morgan": "^1.10.0"
   },
   "devDependencies": {

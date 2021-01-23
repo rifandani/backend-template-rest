@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 const morgan = require('morgan');
+import helmet from 'helmet';
 // files
 import { getHome } from './controllers/HomeController';
 import { getUsers } from './controllers/UserController';
@@ -9,7 +10,8 @@ import { getUsers } from './controllers/UserController';
 const router = express.Router();
 
 // middlewares
-router.use(morgan('dev'));
+router.use(helmet()); // security
+router.use(morgan('dev')); // dev logging API
 router.use(cors());
 router.use(express.json()); // request application/type === json
 router.use(express.urlencoded({ extended: false })); // form data object, value objectnya berasal dari input attribute name
