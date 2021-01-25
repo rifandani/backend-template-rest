@@ -3,6 +3,8 @@
 # node:14-alpine, node:lts
 FROM node:14
 
+# ENV NODE_ENV=production
+
 # create a directory to hold the application code inside the image, this will be the working directory for your application
 WORKDIR /usr/src/app
 
@@ -13,7 +15,7 @@ COPY package*.json ./
 # RUN npm ci --only=production
 RUN npm install
 
-# Bundle app source inside Docker images
+# Copy our source code into Docker images
 COPY . .
 
 # build typescript
@@ -22,5 +24,5 @@ RUN npm run build
 # have it mapped by the docker daemon
 EXPOSE 8080
 
-# command runtime
+# tell Docker what command we want to run when our image is run inside of a container
 CMD [ "node", "build/src/server.js"]

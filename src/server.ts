@@ -1,15 +1,7 @@
-import express from 'express';
-// files
-import router from './router';
-
-// express app
-const app: express.Application = express();
+import app from './app';
 
 // constants
-const PORT = process.env.PORT || 8080;
-
-// routes
-app.use('/', router);
+const PORT = process.env.PORT || 8000;
 
 // listen
 app.listen(PORT, () => console.log(`⚡ on http://localhost:${PORT}`));
