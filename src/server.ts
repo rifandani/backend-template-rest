@@ -4,4 +4,4 @@ import app from './app';
 const PORT = process.env.PORT || 8000;
 
 // listen
-app.listen(PORT, () => console.log(`⚡ on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`⚡ on http://localhost:${PORT}/api`));

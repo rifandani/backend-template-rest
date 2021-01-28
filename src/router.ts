@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-const morgan = require('morgan');
+import morgan from 'morgan';
 import helmet from 'helmet';
 // files
 import { getHome } from './controllers/HomeController';
-import { getUsers } from './controllers/UserController';
+import { getUsers, postUser } from './controllers/UserController';
 
 // express router
 const router = express.Router();
@@ -20,5 +20,6 @@ router.use(express.urlencoded({ extended: false })); // form data object, value 
 // routes
 router.get('/', getHome);
 router.get('/users', getUsers);
+router.post('/users', postUser);
 
 export default router;

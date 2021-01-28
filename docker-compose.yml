@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  # make sure implements retry connectDB 5 times each 5s
+  dbhost:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: rifandani
+      POSTGRES_USER: rizeki
+      POSTGRES_DB: mydb
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  expressapp:
+    # use my own custom image
+    image: rifandani/express:latest
+    # make sure it starts postgres first
+    depends_on:
+      - db
+    ports:
+      - '8000:8000'
