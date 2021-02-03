@@ -1,7 +1,7 @@
 {
-  "name": "docker-express",
+  "name": "backend-template-rest",
   "version": "1.0.0",
-  "description": "Node.js + Express + Typescript + Jest on Docker",
+  "description": "Express + Typescript + Jest with Docker",
   "main": "src/server.ts",
   "scripts": {
     "test": "jest",
@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "author": "Tri Rizeki Rifandani",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@prisma/client": "^2.15.0",
     "cors": "^2.8.5",

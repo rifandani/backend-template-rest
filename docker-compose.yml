@@ -9,7 +9,8 @@ services:
       POSTGRES_USER: rizeki
       POSTGRES_DB: mydb
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      # - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     ports:
       - '5432:5432'
 
@@ -21,3 +22,6 @@ services:
       - db
     ports:
       - '8000:8000'
+
+volumes:
+  pgdata:

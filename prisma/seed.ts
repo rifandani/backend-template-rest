@@ -22,6 +22,7 @@ async function seed(num: number) {
 
 seed(10)
   .catch((e) => {
+    clearTimeout(timeout);
     console.error(e);
     process.exit(1);
   })
