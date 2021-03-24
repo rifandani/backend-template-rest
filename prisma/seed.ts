@@ -1,7 +1,6 @@
-import { PrismaClient } from '@prisma/client';
 import { name, random } from 'faker';
-
-const prisma = new PrismaClient();
+// files
+import prisma from '../src/services/prismaClient';
 let timeout: NodeJS.Timeout;
 
 // A `seed` function so that we can use async/await

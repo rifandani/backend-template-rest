@@ -1,5 +1,8 @@
 node_modules
 build
 coverage
+logs
+.vscode
+
 npm-debug.log
 .env

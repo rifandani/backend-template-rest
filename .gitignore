@@ -1,6 +1,9 @@
 node_modules
 build
 coverage
-*.log
 pgdata
+logs
+
+*.log
 .env
+.env.local

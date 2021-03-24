@@ -1,24 +1,17 @@
-import {
-  Request,
-  Response,
-  // NextFunction
-} from 'express';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { Request, Response } from 'express';
+// files
+import prisma from '../services/prismaClient';
+import logger from '../utils/winstonLogger';
 
 // GET /users
-export const getUsers = async (
-  req: Request,
-  res: Response
-  // next: NextFunction
-): Promise<void> => {
+export const getUsers = async (_: Request, res: Response): Promise<void> => {
   try {
     const users = await prisma.user.findMany();
 
     res.status(200);
     res.json({ success: true, users });
   } catch (err) {
+    logger.error('GET /users prisma error');
     res.status(500);
     res.json({ success: false, msg: err.message, err });
   } finally {
@@ -27,11 +20,7 @@ export const getUsers = async (
 };
 
 // GET /users/:id
-export const getUser = async (
-  req: Request,
-  res: Response
-  // next: NextFunction
-): Promise<void> => {
+export const getUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -42,6 +31,7 @@ export const getUser = async (
     res.status(200);
     res.json({ success: true, user });
   } catch (err) {
+    logger.error('GET /users/:id prisma error');
     res.status(500);
     res.json({ success: false, msg: err.message, err });
   } finally {
@@ -50,11 +40,7 @@ export const getUser = async (
 };
 
 // POST /users
-export const postUser = async (
-  req: Request,
-  res: Response
-  // next: NextFunction
-): Promise<void> => {
+export const postUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, age } = req.body;
 
@@ -68,6 +54,7 @@ export const postUser = async (
     res.status(200);
     res.json({ success: true, user });
   } catch (err) {
+    logger.error('POST /users prisma error');
     res.status(500);
     res.json({ success: false, msg: err.message, err });
   } finally {
@@ -76,15 +63,11 @@ export const postUser = async (
 };
 
 // PUT /users/:id
-export const putUser = async (
-  req: Request,
-  res: Response
-  // next: NextFunction
-): Promise<void> => {
+export const putUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, age } = req.body;
 
-    // TODO: check first if user exists
+    // TODO: check first if user exists biar gak error 500
 
     const user = await prisma.user.update({
       where: {
@@ -99,6 +82,7 @@ export const putUser = async (
     res.status(200);
     res.json({ success: true, user });
   } catch (err) {
+    logger.error('PUT /users/:id prisma error');
     res.status(500);
     res.json({ success: false, msg: err.message, err });
   } finally {
@@ -110,10 +94,9 @@ export const putUser = async (
 export const deleteUser = async (
   req: Request,
   res: Response
-  // next: NextFunction
 ): Promise<void> => {
   try {
-    // TODO: check first if user exists
+    // TODO: check first if user exists biar gak error 500
 
     const user = await prisma.user.delete({
       where: {
@@ -124,6 +107,7 @@ export const deleteUser = async (
     res.status(200);
     res.json({ success: true, user });
   } catch (err) {
+    logger.error('DELETE /users/:id prisma error');
     res.status(500);
     res.json({ success: false, msg: err.message, err });
   } finally {
